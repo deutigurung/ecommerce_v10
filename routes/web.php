@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/',[FrontendController::class,'index'])->name('welcome');
+Route::get('/all-products',[FrontendController::class,'productPage'])->name('front.products');
+Route::get('/about',[FrontendController::class,'aboutPage'])->name('front.about');
+Route::get('/why-us',[FrontendController::class,'whyPage'])->name('front.why');
+Route::get('/testimonials',[FrontendController::class,'testimonialPage'])->name('front.testimonial');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
